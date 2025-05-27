@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Appointment Details</h2>
+    <h4>Appointment for {{ appointment.user.username }}</h4>
+    <p>Title: {{ appointment.title }}</p>
+    <p>Start Time: {{ appointment.start_time }}</p>
+    <p>End Time: {{ appointment.end_time }}</p>
+    <p>Status: {{ appointment.status }}</p>
+
+   
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" name="action" value="confirm" class="btn btn-success">Confirm Appointment</button>
+        <button type="submit" name="action" value="cancel" class="btn btn-danger">Cancel Appointment</button>
+        
+    </form>
+</div>
+{% endblock %}

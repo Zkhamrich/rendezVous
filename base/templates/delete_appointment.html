@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container-fluid d-flex align-items-center" style="min-height: 100vh;">
+    <div class="row justify-content-center w-100">
+      <div class="col-md-6 col-lg-4 text-center">
+        <h2>Supprimer le rendez-vous</h2>
+        <p>Voulez-vous vraiment supprimer ce rendez-vous ?</p>
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <button type="submit" class="btn btn-danger">Oui, supprimer</button>
+          </div>
+        </form>
+        <div>
+          <a href="{% url 'home' %}" class="btn btn-secondary">Annuler</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block navbar %}
+<nav class="navbar navbar-expand-lg bg-primary py-2" data-bs-theme="dark">
+  <div class="container-fluid">
+      <a class="navbar-brand ms-3" href="#">Schedulify</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor1">
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                  <a href="{% url 'home' %}" class="nav-link">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+{% endblock navbar %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Welcome, {{ user.username }}!</h2>
+    <h3>Your Appointments</h3>
+    
+    <a href="{% url 'create_appointment' %}" class="btn btn-primary">Create Appointment</a>
+    
+    <ul class="list-group mt-3">
+        {% for appointment in appointments %}
+            <li class="list-group-item">
+                <h4>{{ appointment.title }}</h4>
+                <p>{{ appointment.description }}</p>
+                <p>Start Time: {{ appointment.start_time }}</p>
+                <p>End Time: {{ appointment.end_time }}</p>
+                <p>Statues : {{ appointment.status }}</p>
+                <a href="{% url 'edit_appointment' appointment.id %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'delete_appointment' appointment.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </li>
+        {% empty %}
+            <li class="list-group-item">You have no appointments.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block navbar %}
+<nav class="navbar navbar-expand-lg bg-primary py-2" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand ms-3" href="#">Schedulify</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor1">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="{% url 'login' %}" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'register' %}" class="nav-link">Register</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock navbar %}
+
+
+{% block content %}
+<section class="d-flex flex-column align-items-center justify-content-center text-center bg-light" style="height: 80vh;">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Effortless Appointment Scheduling</h1>
+        <p class="lead text-muted">Manage your bookings with ease and efficiency.</p>
+        <a href="{% url 'login' %}" class="btn btn-primary">Get Started</a>
+    </div>
+</section>
+{% endblock content %}

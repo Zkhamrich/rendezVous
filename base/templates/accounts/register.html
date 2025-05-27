@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <h1 class="text-center">Register</h1>
+                <form action="{% url 'register' %}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="first_name" class="form-label">First name</label>
+                        {{form.first_name}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label">Last name</label>
+                        {{form.last_name}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        {{form.username}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        {{form.email}}
+                        {% if form.email.errors %}
+                            {% for error in form.email.errors %}
+                                <p class="badge bg-danger">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        {{form.password}}
+                    </div>
+                    <div class="mb-3">
+                        <label for="password_confirm" class="form-label">Confirm Password</label>
+                        {{form.password_confirm}}
+                    </div>
+                    {% if form.password_confirm.errors %}
+                            <div class="text-danger">
+                                {% for error in form.password_confirm.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                    {% endif %}
+                    <button type="submit" class="btn btn-danger">Register</button>                    
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
